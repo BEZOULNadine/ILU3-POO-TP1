@@ -1,13 +1,13 @@
 package Cartes;
 
-public class Parada extends Bataille {
-
-	public Parada(Type type) {
+public class Parade extends Bataille {
+	public Parade(Type type) {
 		super(type);
 	}
 
 	@Override
 	public String toString() {
 		return getType().getParade();}
+
 
 }

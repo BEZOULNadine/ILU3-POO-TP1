@@ -1,0 +1,56 @@
+package Cartes;
+
+public class JeuDeCartes {
+	private Configuration[] typesDeCartes;
+
+	public JeuDeCartes() {
+
+		typesDeCartes = new Configuration[] {
+				// Bornes
+				new Configuration(new Borne(25), 10), new Configuration(new Borne(50), 10),
+				new Configuration(new Borne(75), 10), new Configuration(new Borne(100), 12),
+				new Configuration(new Borne(200), 4),
+
+				// Parades
+				new Configuration(new Parade(Type.FEU), 14), new Configuration(new Parade(Type.ESSENCE), 6),
+				new Configuration(new Parade(Type.CREVAISON), 6), new Configuration(new Parade(Type.ACCIDENT), 6),
+
+				// Limites
+				new Configuration(new FinLimite(), 6), new Configuration(new DebutLimite(), 4),
+
+				// Attaques
+				new Configuration(new Attaque(Type.FEU), 5), new Configuration(new Attaque(Type.ESSENCE), 3),
+				new Configuration(new Attaque(Type.CREVAISON), 3), new Configuration(new Attaque(Type.ACCIDENT), 3),
+
+				// Bottes
+				new Configuration(new Botte(Type.FEU), 1), new Configuration(new Botte(Type.ESSENCE), 1),
+				new Configuration(new Botte(Type.CREVAISON), 1), new Configuration(new Botte(Type.ACCIDENT), 1) };
+	}
+
+	public String affichageJeuDeCartes() {
+		StringBuilder sb = new StringBuilder();
+		for (Configuration configuration : typesDeCartes) {
+			sb.append(configuration.getNbExemplaires()).append(" ").append(configuration.getCarte())
+					.append(System.lineSeparator());
+		}
+		return sb.toString();
+	}
+
+	public Carte[] donnerCartes() {
+		int total = 0;
+		for (Configuration configuration : typesDeCartes) {
+			total += configuration.getNbExemplaires();
+		}
+
+		Carte[] cartes = new Carte[total];
+		int index = 0;
+		for (Configuration configuration : typesDeCartes) {
+			for (int i = 0; i < configuration.getNbExemplaires(); i++) {
+				cartes[index] = configuration.getCarte();
+				index++;
+			}
+		}
+		return cartes;
+	}
+
+}
