@@ -53,20 +53,20 @@ public class JeuDeCartes {
 		return cartes;
 	}
 
-	public class Configuration extends Carte {
-		private Carte carte;
-		private Integer nbExemplaires;
+	private static class Configuration {
+		private final Carte carte;
+		private final Integer nbExemplaires;
 
-		public Configuration(Carte carte, Integer nbExemplaires) {
+		private Configuration(Carte carte, Integer nbExemplaires) {
 			this.carte = carte;
 			this.nbExemplaires = nbExemplaires;
 		}
 
-		public Carte getCarte() {
+		private Carte getCarte() {
 			return carte;
 		}
 
-		public Integer getNbExemplaires() {
+		private int getNbExemplaires() {
 			return nbExemplaires;
 		}
 
