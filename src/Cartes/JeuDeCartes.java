@@ -53,4 +53,23 @@ public class JeuDeCartes {
 		return cartes;
 	}
 
+	public class Configuration extends Carte {
+		private Carte carte;
+		private Integer nbExemplaires;
+
+		public Configuration(Carte carte, Integer nbExemplaires) {
+			this.carte = carte;
+			this.nbExemplaires = nbExemplaires;
+		}
+
+		public Carte getCarte() {
+			return carte;
+		}
+
+		public Integer getNbExemplaires() {
+			return nbExemplaires;
+		}
+
+	}
+
 }

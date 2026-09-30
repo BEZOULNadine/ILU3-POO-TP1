@@ -13,11 +13,10 @@ public class Sabot implements Iterable<Carte> {
 
 	public Sabot(Carte[] cartes) {
 		this.cartes = cartes;
-		this.nbcartes=cartes.length;
-
+		this.nbcartes = cartes.length;
 	}
 
-	public Boolean estVide() {
+	public boolean estVide() {
 		return nbcartes == 0;
 	}
 
@@ -56,6 +55,7 @@ public class Sabot implements Iterable<Carte> {
 
 		@Override
 		public Carte next() {
+			verificationConcurrence();
 			if (!hasNext()) {
 				throw new NoSuchElementException();
 			}
@@ -67,6 +67,7 @@ public class Sabot implements Iterable<Carte> {
 
 		@Override
 		public void remove() {
+			verificationConcurrence();
 			if (!nextEffectue) {
 				throw new IllegalStateException("remove() appelé sans next() préalable");
 			}
@@ -81,5 +82,11 @@ public class Sabot implements Iterable<Carte> {
 			nbOperationsReference++;
 		}
 
+		private void verificationConcurrence() {
+			if (nbOperations != nbOperationsReference) {
+				throw new ConcurrentModificationException();
+			}
+		}
 	}
+
 }

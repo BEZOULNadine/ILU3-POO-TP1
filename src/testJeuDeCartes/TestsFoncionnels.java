@@ -7,9 +7,9 @@ public class TestsFoncionnels {
 		JeuDeCartes jeu = new JeuDeCartes();
 		System.out.println("JEU:\n" + jeu.affichageJeuDeCartes());
 		
-//        if (!jeu.ch) {
-//            System.out.println("erreur de nombre");
-//        }
+ //       if (!jeu.checkCount()) {
+ //           System.out.println("erreur de nombre");
+ //       }
 
 	}
 }
