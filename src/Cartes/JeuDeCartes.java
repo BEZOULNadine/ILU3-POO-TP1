@@ -72,4 +72,22 @@ public class JeuDeCartes {
 
 	}
 
+	public boolean checkCount() {
+		Carte[] cartes = donnerCartes();
+		int total = 0;
+		for (Configuration configuration : typesDeCartes) {
+			int compteur = 0;
+			for (Carte carte : cartes) {
+				if (configuration.getCarte().equals(carte)) {
+					compteur++;
+				}
+			}
+			if (compteur != configuration.getNbExemplaires()) {
+				return false;
+			}
+			total += configuration.getNbExemplaires();
+		}
+		return total == cartes.length;
+	}
+
 }

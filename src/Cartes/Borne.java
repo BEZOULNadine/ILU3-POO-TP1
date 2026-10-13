@@ -16,4 +16,14 @@ public class Borne extends Carte {
 		return km + "km";
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj) && km.equals(((Borne) obj).km);
+	}
+
+	@Override
+	public int hashCode() {
+		return 31 * super.hashCode() + km.hashCode();
+	}
+
 }
