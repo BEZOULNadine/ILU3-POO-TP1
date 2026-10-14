@@ -100,7 +100,7 @@ public class GestionCartes {
 		return true;
 	}
 
-	// cherche valeur à partir de l'indice debut
+	// cherche valeur à partir de l'indice debut (balayer le reste de la liste)
 	private static <T> boolean apparaitDansLeReste(List<T> liste, int debut, T valeur) {
 		ListIterator<T> it = liste.listIterator(debut);
 		while (it.hasNext()) {
