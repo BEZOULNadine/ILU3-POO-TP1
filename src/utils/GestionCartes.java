@@ -24,11 +24,8 @@ public class GestionCartes {
 	// a. extraire, version 2 : avec un ListIterator
 	public static <T> T extraireIterator(List<T> liste) {
 		int index = RANDOM.nextInt(liste.size());
-		ListIterator<T> it = liste.listIterator();
-		T element = null;
-		for (int i = 0; i <= index; i++) {
-			element = it.next();
-		}
+		ListIterator<T> it = liste.listIterator(index);
+		T element = it.next();
 		it.remove();
 		return element;
 	}
@@ -94,17 +91,24 @@ public class GestionCartes {
 		while (it.hasNext()) {
 			T courant = it.next();
 			if (!Objects.equals(courant, ancien)) {
-				// changement de valeur : on cherche l'ancienne valeur dans le reste
-				ListIterator<T> it2 = liste.listIterator(it.nextIndex());
-				while (it2.hasNext()) {
-					if (Objects.equals(it2.next(), ancien)) {
-						return false;
-					}
+				if (apparaitDansLeReste(liste, it.nextIndex(), ancien)) {
+					return false;
 				}
 				ancien = courant;
 			}
 		}
 		return true;
+	}
+
+	// cherche valeur à partir de l'indice debut
+	private static <T> boolean apparaitDansLeReste(List<T> liste, int debut, T valeur) {
+		ListIterator<T> it = liste.listIterator(debut);
+		while (it.hasNext()) {
+			if (Objects.equals(it.next(), valeur)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

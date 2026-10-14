@@ -12,13 +12,12 @@ public class Jeu {
 	private Sabot sabot;
 
 	public Jeu() {
-		// a. tableau de cartes -> liste (Collections.addAll), puis melange
+
 		JeuDeCartes jeuDeCartes = new JeuDeCartes();
 		List<Carte> listeCartes = new ArrayList<>();
 		Collections.addAll(listeCartes, jeuDeCartes.donnerCartes());
 		listeCartes = GestionCartes.melanger(listeCartes);
 
-		// b. liste -> tableau (toArray), puis creation du sabot
 		sabot = new Sabot(listeCartes.toArray(new Carte[0]));
 	}
 
